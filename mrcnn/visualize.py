@@ -18,7 +18,7 @@ from skimage.measure import find_contours
 import matplotlib.pyplot as plt
 from matplotlib import patches,  lines
 from matplotlib.patches import Polygon
-import IPython.display
+#import IPython.display
 
 # Root directory of the project
 ROOT_DIR = os.path.abspath("../")
@@ -98,6 +98,7 @@ def display_instances(image, boxes, masks, class_ids, class_names,
     captions: (optional) A list of strings to use as captions for each object
     """
     # Number of instances
+    print("inside the function\n")
     N = boxes.shape[0]
     if not N:
         print("\n*** No instances to display *** \n")
@@ -111,6 +112,7 @@ def display_instances(image, boxes, masks, class_ids, class_names,
         auto_show = True
 
     # Generate random colors
+    print(auto_show)
     colors = colors or random_colors(N)
 
     # Show area outside image boundaries.
@@ -163,6 +165,9 @@ def display_instances(image, boxes, masks, class_ids, class_names,
             p = Polygon(verts, facecolor="none", edgecolor=color)
             ax.add_patch(p)
     ax.imshow(masked_image.astype(np.uint8))
+    print("came to ", ROOT_DIR)
+    plt.savefig(ROOT_DIR+"/output.png")
+
     if auto_show:
         plt.show()
 
