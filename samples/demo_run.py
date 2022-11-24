@@ -90,7 +90,8 @@ class_names = ['BG', 'person', 'bicycle', 'car', 'motorcycle', 'airplane',
 
 # Load a random image from the images folder
 file_names = next(os.walk(IMAGE_DIR))[2]
-image = skimage.io.imread(os.path.join(IMAGE_DIR, random.choice(file_names)))
+# image = skimage.io.imread(os.path.join(IMAGE_DIR, random.choice(file_names)))
+image = skimage.io.imread( ROOT_DIR+ "/football.jpeg")
 
 # Run detection
 results = model.detect([image], verbose=1)
@@ -210,7 +211,7 @@ def save_instances(image, boxes, masks, class_ids, class_names,
             ax.add_patch(p)
     ax.imshow(masked_image.astype(np.uint8))
     print("came to ", ROOT_DIR)
-    plt.savefig(ROOT_DIR+"/output.png")
+    plt.savefig(ROOT_DIR+"/output_football.png")
     plt.show()
     if auto_show:
         plt.show()
